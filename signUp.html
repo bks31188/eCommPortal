@@ -40,21 +40,6 @@ padding: 0px 10px;
 width: 280px;
 -webkit-appearance:none;
 }
-form fieldset input[type="number"] {
-background-color: #e5e5e5;
-border: none;
-border-radius: 3px;
--moz-border-radius: 3px;
--webkit-border-radius: 3px;
-color: #5a5656;
-font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-font-size: 14px;
-height: 50px;
-outline: none;
-padding: 0px 10px;
-width: 280px;
--webkit-appearance:none;
-}
 form fieldset input[type="submit"] {
 background-color: #a31818;
 border: none;
@@ -94,22 +79,21 @@ width: 50px;
 <body>
 <div id="login">
 <h1><strong>Please proceed to sign up.</strong></h1>
-<form action="javascript:void(0);" method="get">
+<form name="f1" action="signUp.html" method="POST">
 <fieldset>
 <div id="FirstNameSignUp">
-<label>First Name</label>
 <p><input type="text" required value="First Name" onBlur="if(this.value=='')this.value='First Name'" onFocus="if(this.value=='First Name')this.value='' "></p>
 </div>
 <div id="LastNameSignUp">
 <p><input type="text" required value="Last Name" onBlur="if(this.value=='')this.value='Last Name'" onFocus="if(this.value=='Last Name')this.value='' "></p>
 </div>
 <div id="userNameSignUp">
-<p><input type="text" required value="Username" onBlur="if(this.value=='')this.value='Username'" onFocus="if(this.value=='Username')this.value='' "></p>
+<p><input type="text" required value="Username" onBlur="val_pass()" onBlur="if(this.value=='')this.value='Username'" onFocus="if(this.value=='Username')this.value='' "></p>
 </div>
 <div id="passwordSignUp">
 <p><input type="text" required value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "></p>
 </div>
-<div id="retpePasswordSignUp">
+<div id="retypePasswordSignUp">
 <p><input type="text" required value="Retype Password" onBlur="if(this.value=='')this.value='Retype Password'" onFocus="if(this.value=='Retype Password')this.value='' "></p>
 <!--<input type="text" name="user[login]" id="user[login]" class="form-control form-control-lg input-block" placeholder="Pick a username" data-autocheck-url="/signup_check/username" data-autocheck-authenticity-token="U5VD0wValzI9j/yc0fGK8YpDBrjuXy+G/eTeJLjqRrst7wqHPyvqKi2ibKK7zShgjvbU6rpKCOOl+Mt0pWl/sg==" autofocus="">-->
 </div>
@@ -117,10 +101,32 @@ width: 50px;
 <p><input type="email" required value="eMail ID" onBlur="if(this.value=='')this.value='eMail ID'" onFocus="if(this.value=='eMail ID')this.value='' "></p>
 </div>
 <div id="phoneNumberSignUp" type="number">
-<p><input type= "number" required value="98765443210" pattern="[7-9]" onBlur="if(this.value=='')this.value='98765443210'" onFocus="if(this.value=='98765443210')this.value='' "></p>
+<p><input type= "number" required value="98765443210" onBlur="val_mobile()" onFocus="if(this.value=='98765443210')this.value='' "></p>
+
 </div>
 <p><input type="submit" value="Sign Up"></p>
+
+<script>
+<!-- validation functions -->
+function val_pass()
+{
+    var pass=f1.password.value;
+    if(pass=="")
+    {  alert ("Enter a valid password without special characters");}
+}
+function val_mobile()
+	{ 
+		var phno=f1.mobile.value;
+		var m=/^[789]\d{9}$/;
+		if(!phno.match(m)||phno.length<10||phno.length>10)
+			alert("Enter a valid phone number"); 
+	}
+
+</script>
 </fieldset>
 </form>
+
+
+
 </body>
 </html>
